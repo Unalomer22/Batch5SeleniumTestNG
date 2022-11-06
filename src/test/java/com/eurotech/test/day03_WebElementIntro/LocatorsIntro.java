@@ -39,10 +39,15 @@ public class LocatorsIntro {
         WebElement signInButonu = driver.findElement(By.name("commit"));
 
         Thread.sleep(5000);
+
         emailTextBox.sendKeys("testtechproed@gmail.com");
+
         Thread.sleep(5000);
+
         passwordTextBox.sendKeys("Test1234!");
+
         Thread.sleep(5000);
+
         signInButonu.click();
 
         WebElement kullaniciAdi = driver.findElement(By.className("navbar-text"));

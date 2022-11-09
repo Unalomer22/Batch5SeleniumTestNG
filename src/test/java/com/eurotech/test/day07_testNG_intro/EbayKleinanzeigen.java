@@ -14,7 +14,7 @@ public class EbayKleinanzeigen {
     public void test1(){
         driver.get("https://www.ebay-kleinanzeigen.de/");
 
-        WebElement cerezBtn = driver.findElement(By.);
-        cerezBtn.click();
+      //  WebElement cerezBtn = driver.findElement(By.);
+       // cerezBtn.click();
     }
 }

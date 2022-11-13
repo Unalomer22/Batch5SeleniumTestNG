@@ -92,7 +92,7 @@ public class CheckBoxDemo2 {
 
         Assert.assertTrue(hello.isDisplayed(),"verify that element is displayed");
 
-
+        driver.close();
 
 
     }

@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class NoSelectDropDown {
     WebDriver driver;
@@ -18,6 +19,7 @@ public class NoSelectDropDown {
     public void setUp() {
         driver = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
@@ -34,7 +36,7 @@ public class NoSelectDropDown {
         //get the options with findelements method and finding common locator between then
         List<WebElement> papayaList = driver.findElements(By.xpath("(//ul[@class='o-mnits'])[10]/li"));
 
-        System.out.println("papayaList.size() = " + papayaList.size());
+        System.out.println("papayaList.size() = " + papayaList.size());// 5
 
 
         Assert.assertEquals(papayaList.size(),5); // --> shot way
@@ -52,15 +54,15 @@ public class NoSelectDropDown {
 
 
         papayaList.get(2).click();
+        System.out.println("papayaList.get(2) = " + papayaList.get(2).getText());// papayaList.get(2) = Vegetables
 
         Thread.sleep(1000);
-
 
     }
     @AfterMethod
     public void tearDown() throws InterruptedException {
         Thread.sleep(2000);
-        // driver.quit();
+        driver.quit();
     }
 
 }

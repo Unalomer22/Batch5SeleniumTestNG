@@ -26,7 +26,7 @@ public class ListOfWebElements {
 
         // save our elements inside the list
         List<WebElement> menuList=driver.findElements(By.xpath("//a[text()='A/B Testing']/../../li"));
-        //List<WebElement> menuList=driver.findElements(By.xpath("//li"));
+        //List<WebElement> menuList=driver.findElements(By.xpath("//li")); List oldugu icin aranilan eleman yoksa eleman sayisi 0 olur ve hata vermez
 
         //get size -> returns the size of the element
         System.out.println("menuList.size() = " + menuList.size());
@@ -36,9 +36,9 @@ public class ListOfWebElements {
 
         Assert.assertEquals(actualSize,expectedSize,"Verify that menu size is 44");
 
-        System.out.println("menuList.get(0) = " + menuList.get(0).getText());
+        System.out.println("menuList.get(0) = " + menuList.get(0).getText());// menuList.get(0) = A/B Testing
 
-        menuList.get(0).click();
+         menuList.get(0).click();
         Thread.sleep(3000);
 
         //print all elements
@@ -51,6 +51,8 @@ public class ListOfWebElements {
     public void test2(){
         driver.get("https://demoqa.com/elements");
         // TASK --> go to that url and verify that 6 elements are there
+        //driver.findElements(By.cssSelector(".header-text")); seklinde yazdiktan sonra "Alt ve enter tuslarina birlikte basildiginda
+        //                                                        "List<WebElement> menuList" yazisi cikar
         List<WebElement> menuList = driver.findElements(By.cssSelector(".header-text"));
         System.out.println("menuList.size() = " + menuList.size());
 

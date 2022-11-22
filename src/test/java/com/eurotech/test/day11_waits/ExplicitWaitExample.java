@@ -20,7 +20,7 @@ public class ExplicitWaitExample {
     @BeforeMethod
     public void setUp() {
         driver= WebDriverFactory.getDriver("chrome");
-       //  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         WebDriverWait wait=new WebDriverWait(driver,15);
     }

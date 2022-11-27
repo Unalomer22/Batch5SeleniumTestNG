@@ -30,8 +30,7 @@ public class WebDriverFactory { // Method Deposu
 // Ikinci yol
 
         public static WebDriver getDriver(String browserType){
-
-            WebDriver driver=null;
+            WebDriver driver = null;
 
             switch (browserType.toLowerCase()){
 

@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class HoverTask {
-
     WebDriver driver;
 
     @BeforeMethod
@@ -23,18 +22,14 @@ public class HoverTask {
         driver= WebDriverFactory.getDriver("chrome");
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-
     }
-
     @AfterMethod
     public void tearDown() throws InterruptedException {
         Thread.sleep(2000);
-        driver.close();
+        //driver.close();
     }
-
     @Test
     public void hoverTask() throws InterruptedException {
-
         /** class Task
          *
          *                 go to https://the-internet.herokuapp.com/hovers url
@@ -43,7 +38,6 @@ public class HoverTask {
          *
          *                 hind: Use list and for loop
          */
-
         driver.get("https://the-internet.herokuapp.com/hovers");
 
         driver.findElement(By.xpath("(//img)[2]"));// text ve index oldugunda xpath kullaniyoruz
@@ -51,9 +45,9 @@ public class HoverTask {
         List<WebElement> imgList = driver.findElements(By.tagName("img"));
         // img size: 4
 
-        for (int i = 2; i <= ((List<?>) imgList).size(); i++) {
+        for (int i = 2; i <= imgList.size(); i++) {
 
-            String imgXpath="(//img)["+i+"]";
+            String imgXpath="(//img)["+ i +"]";
             System.out.println("imgXpath = " + imgXpath);
 
             WebElement img = driver.findElement(By.xpath(imgXpath));
@@ -65,6 +59,7 @@ public class HoverTask {
 
             // if I use --> //h5[text()='name: user1']"  ==> user1
             // if I use --> //h5[text()='name: user"+i+"']"  ==> user2
+
             String textPath="//h5[text()='name: user"+(i-1)+"']";  //-> it is dynamic and ı can get all
 
             WebElement text = driver.findElement(By.xpath(textPath));
@@ -74,16 +69,7 @@ public class HoverTask {
             Assert.assertTrue(text.isDisplayed(),"Verify that user "+(i-1)+" is displayed");
 
             System.out.println("Verify that user " + (i - 1) + " is displayed");
-
         }
-
     }
-
-
-
-
-
-
-
 
 }

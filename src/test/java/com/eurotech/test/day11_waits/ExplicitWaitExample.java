@@ -11,6 +11,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ExplicitWaitExample {
@@ -35,6 +37,8 @@ public class ExplicitWaitExample {
         driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
 
         WebDriverWait wait = new WebDriverWait(driver,15);
+        //String b = 123;
+        List<String> c = new ArrayList<>();
 
         driver.findElement(By.cssSelector("#start>button")).click();
 

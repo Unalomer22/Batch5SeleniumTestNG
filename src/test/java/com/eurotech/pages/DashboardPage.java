@@ -12,7 +12,6 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//p[text()=' Welcome']")
     public WebElement welcomeMessage_loc;
 
-
     @FindBy(xpath = "//a[text()='All Posts']")
     public WebElement allPosts_loc;
 
@@ -25,9 +24,19 @@ public class DashboardPage extends BasePage {
     @FindBy(css = ".nav__menu-item")
     public List<WebElement> menuList_loc;
 
+    // if u need --> create a new Class named Postspage and write the web element in to the that page
+    @FindBy(css = "#post-form-btn")
+    public WebElement submitBtn_loc;
+
     public void navigateToMenu(String menuName){
         Driver.get().findElement(By.xpath("//*[text()='"+menuName+"']")).click();
 
     }
+
+    public void navigateToSubMenu(String subMenu){
+        Driver.get(). findElement(By.xpath("//span[text()='"+subMenu+"']")).click();
+
+    }
+
 
 }

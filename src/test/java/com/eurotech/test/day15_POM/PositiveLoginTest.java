@@ -60,7 +60,6 @@ public class PositiveLoginTest extends TestBase {
 
         BrowserUtils.hover(img3);
 
-
     }
 
 

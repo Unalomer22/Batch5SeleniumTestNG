@@ -1,64 +1,17 @@
 package com.eurotech.pages;
 
+import com.eurotech.test.TestBase;
 import com.eurotech.utilities.ConfigurationReader;
-import com.eurotech.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
-import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class LoginPage extends BasePage {
-
-    @FindBy(id = "loginpage-input-email")
-    public WebElement usernameInput_loc;
-
-    @FindBy(name = "password")
-    public WebElement passwordInput_loc;
-
-    @FindBy(xpath = "//input[@type='submit']")
-    public WebElement loginBtn_loc;
-
-    @FindBy(xpath = "//*[.='Invalid Credentials!']")
-    public WebElement warningMessage_loc;
-
-    @FindBy(css=".menu-list")
-    public List<WebElement> menuList_Loc;
-
-
-    public void login_Mtd(String username, String password){
-
-        usernameInput_loc.sendKeys(username);
-        passwordInput_loc.sendKeys(password);
-        loginBtn_loc.click();
-
-    }
-
-    public void loginAsTeacher_Mtd(){
-        String username=ConfigurationReader.get("usernameTeacher");
-        String password=ConfigurationReader.get("passwordTeacher");
-
-        usernameInput_loc.sendKeys(username);
-        passwordInput_loc.sendKeys(password);
-        understandBtn_Loc.click();
-        loginBtn_loc.click();
-
-    }
-
-    public void loginAsStudent_Mtd(){
-        usernameInput_loc.sendKeys(ConfigurationReader.get("usernameStudent"));
-        passwordInput_loc.sendKeys(ConfigurationReader.get("passwordStudent"));
-        loginBtn_loc.click();
-    }
-
-
-
-
-    /**
-     * These are change with devEX web site
-     * */
+public class SauceDemoLoginPage extends TestBase {
 
     @FindBy(id = "user-name")
     public WebElement usernameInput;
@@ -75,8 +28,8 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//span[text()='Products']")
     public WebElement productsText;
 
-    // @FindBy(xpath = "//form/div")
-    // public List<WebElement> listElements;
+    @FindBy(xpath = "//form/div")
+    public List<WebElement> listElements;
 
     @FindAll({
             @FindBy(id = "user-name"),
@@ -90,7 +43,8 @@ public class LoginPage extends BasePage {
     })
     public WebElement getPasswordInput;
 
-    public void login(){
+    public void login01(){
+        String asd = "qwe";
 
         usernameInput.sendKeys(ConfigurationReader.get("userswag"));
         passwordInput.sendKeys(ConfigurationReader.get("passwordswag"));
@@ -105,6 +59,7 @@ public class LoginPage extends BasePage {
         loginBtn.click();
 
     }
+
     public void loginAsProblem(){
         String username=ConfigurationReader.get("userProblem");
         String password=ConfigurationReader.get("passwordswag");
@@ -113,10 +68,45 @@ public class LoginPage extends BasePage {
         loginBtn.click();
 
     }
+    @Test
+    public void login() {
+        driver.get(ConfigurationReader.get("url1"));
+        usernameInput.sendKeys(ConfigurationReader.get("userswag"));
+        passwordInput.sendKeys(ConfigurationReader.get("passwordswag"));
+        loginBtn.click();
 
-/**
- ***These are change with devEx website
- */
+        Assert.assertEquals(productsText.getText(),"PRODUCTS");
 
+    }
+
+    @Test
+    public void loginWithMethod() {
+        driver.get(ConfigurationReader.get("url1"));
+        login();
+
+        Assert.assertEquals(productsText.getText(),"PRODUCTS");
+    }
+
+    @Test
+    public void loginAsPerform02() {
+        driver.get(ConfigurationReader.get("url1"));
+
+        loginAsPerform();
+
+        String actualUrl=driver.getCurrentUrl();
+
+        Assert.assertEquals(actualUrl,"https://www.saucedemo.com/inventory.html");
+
+    }
+
+    @Test
+    public void loginAsProblemMethod() {
+        driver.get(ConfigurationReader.get("url1"));
+
+        loginAsProblem();
+
+        Assert.assertEquals(productsText.getText(),"PRODUCTS");
+
+    }
 
 }

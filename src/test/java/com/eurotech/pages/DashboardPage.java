@@ -37,6 +37,8 @@ public class DashboardPage extends BasePage {
         Driver.get(). findElement(By.xpath("//span[text()='"+subMenu+"']")).click();
 
     }
-
+    public String getCompany_mtd(String companyName){
+        return Driver.get().findElement(By.xpath("//td[text()='Apple']")).getText();
+    }
 
 }

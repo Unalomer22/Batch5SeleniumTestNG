@@ -1,6 +1,7 @@
 package com.eurotech.test.day15_POM;
 
 import com.eurotech.pages.LoginPage;
+import com.eurotech.pages.SauceDemoLoginPage;
 import com.eurotech.test.TestBase;
 import com.eurotech.utilities.ConfigurationReader;
 import org.openqa.selenium.By;
@@ -9,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class NegativeLoginTest extends TestBase {
-    LoginPage loginPage=new LoginPage();
+    SauceDemoLoginPage loginPage=new SauceDemoLoginPage();
 
     @Test
     public void wrongUserName(){
